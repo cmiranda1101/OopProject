@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public bool facingRight;
     private float leftBound = -10.5f;
     private float rightBound = 10.5f;
+
+    public GameObject projectile;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3 (10.5f, transform.position.y, transform.position.z);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
     }
 
     void MoveRight()
@@ -56,5 +64,10 @@ public class PlayerController : MonoBehaviour
             facingRight = false;
         }
         transform.Translate(Vector3.right * speed * Time.deltaTime);
+    }
+
+    void Shoot()
+    {
+        Instantiate(projectile, transform.position, player.transform.rotation);
     }
 }

@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
+  projectile: {fileID: 6059964698944542688, guid: e0a6cd1eec710f442a8b32e6fcbad1a0, type: 3}
+  player: {fileID: 103294235}
 --- !u!1 &197292828
 GameObject:
   m_ObjectHideFlags: 0
