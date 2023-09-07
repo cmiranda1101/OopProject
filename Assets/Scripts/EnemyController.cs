@@ -18,4 +18,14 @@ public class EnemyController : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(gameObject.transform.position, player.transform.position, speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Projectile"))
+        {
+            Debug.Log("enemy shot");
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
+    }
 }

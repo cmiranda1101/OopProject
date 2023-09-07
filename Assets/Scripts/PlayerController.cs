@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public bool facingRight;
     private float leftBound = -10.5f;
     private float rightBound = 10.5f;
+    private float inputDelay;
 
     public GameObject projectile;
     public GameObject player;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         facingRight = true;
+        inputDelay = 0.0f;
     }
 
     // Update is called once per frame
@@ -40,10 +42,12 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3 (10.5f, transform.position.y, transform.position.z);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && inputDelay <= 0.0f)
         {
             Shoot();
+            inputDelay = 0.5f;
         }
+        inputDelay -= Time.deltaTime;
     }
 
     void MoveRight()
