@@ -6,11 +6,13 @@ public class EnemyController : MonoBehaviour
 {
     private GameObject player;
     private float speed;
+    private int health;
     // Start is called before the first frame update
     void Awake()
     {
         player = GameObject.Find("Player");
         speed = 7.0f;
+        health = 2;
     }
 
     // Update is called once per frame
@@ -23,9 +25,12 @@ public class EnemyController : MonoBehaviour
     {
         if(other.CompareTag("Projectile"))
         {
-            Debug.Log("enemy shot");
-            Destroy(gameObject);
             Destroy(other.gameObject);
+            health -= 1;
+            if (health == 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
