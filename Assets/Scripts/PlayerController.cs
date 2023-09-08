@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && inputDelay <= 0.0f)
         {
             Shoot();
-            inputDelay = 0.5f;
+            inputDelay = 0.2f;
         }
         inputDelay -= Time.deltaTime;
     }

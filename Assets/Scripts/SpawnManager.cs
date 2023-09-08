@@ -1,39 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     public GameObject enemy;
+    private int waveCount;
+    private int enemyCount;
     // Start is called before the first frame update
     void Start()
     {
-        
+        waveCount = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        enemyCount = FindObjectsOfType<EnemyController>().Length;
+        if (enemyCount == 0)
         {
-            SpawnEnemyRight();
-        }
-
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            SpawnEnemyLeft();
+            SpawnEnemyWave(waveCount);
+            waveCount++;
         }
     }
 
-    private void SpawnEnemyRight()
+    private Vector3 PickRandomSpawn()
     {
-        Vector3 rightSpawnPos = new Vector3(20, 0, -4);
-        Instantiate(enemy, rightSpawnPos, enemy.transform.rotation);
+        int diceRoll = Random.Range (1, 10);
+        float spawnPosX = Random.Range(20, 35);
+        
+        if (diceRoll <6)
+        {
+            spawnPosX *= -1;
+        }
+
+        Vector3 randomSpawn = new Vector3(spawnPosX, 0, -4);
+
+        return randomSpawn;
     }
 
-    private void SpawnEnemyLeft()
+    void SpawnEnemyWave(int spawnCredits)
     {
-        Vector3 leftSpawnPos = new Vector3(-20, 0, -4);
-        Instantiate(enemy, leftSpawnPos, enemy.transform.rotation);
+        for (int i = 0; i < spawnCredits; i++)
+        {
+            Instantiate(enemy, PickRandomSpawn(), enemy.transform.rotation);
+        }
     }
 }

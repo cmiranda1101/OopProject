@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         player = GameObject.Find("Player");
-        speed = 10.0f;
+        speed = 7.0f;
     }
 
     // Update is called once per frame
