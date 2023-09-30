@@ -744,7 +744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1461447685}
-  - component: {fileID: 1461447684}
+  - component: {fileID: 1461447686}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -752,19 +752,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1461447684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461447683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4918c47569b0294781c4565ab5ff98b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 9040716872873115350, guid: a0b2b7b823739ba4c8b92c5536c3ac73, type: 3}
 --- !u!4 &1461447685
 Transform:
   m_ObjectHideFlags: 0
@@ -782,6 +769,25 @@ Transform:
   - {fileID: 1365985403}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1461447686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461447683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4918c47569b0294781c4565ab5ff98b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  scout: {fileID: 0}
+  knight: {fileID: 0}
+  enemies:
+  - {fileID: 9040716872873115350, guid: a0b2b7b823739ba4c8b92c5536c3ac73, type: 3}
+  - {fileID: 3696799187894633305, guid: 9239496520c36014b9ced60ccbf7fc96, type: 3}
+  - {fileID: 3186349143186673599, guid: abf255e416ade6742b547b95bf14c78b, type: 3}
 --- !u!1 &1987628791
 GameObject:
   m_ObjectHideFlags: 0

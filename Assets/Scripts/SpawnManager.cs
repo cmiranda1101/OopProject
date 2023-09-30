@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject enemy;
+    private GameObject enemy;
+    public GameObject[] enemies;
     private int waveCount;
     private int enemyCount;
     // Start is called before the first frame update
@@ -22,6 +23,21 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnEnemyWave(waveCount);
             waveCount++;
+        }
+
+        //if (Input.GetKeyDown(KeyCode.O))
+        {
+            //Instantiate(enemy, PickRandomSpawn(), enemy.transform.rotation);
+        }
+
+        //if (Input.GetKeyDown(KeyCode.P))
+        {
+            //Instantiate(scout, PickRandomSpawn(), scout.transform.rotation);
+        }
+
+        //if (Input.GetKeyDown(KeyCode.I))
+        {
+            //Instantiate(knight, PickRandomSpawn(), knight.transform.rotation);
         }
     }
 
@@ -40,11 +56,17 @@ public class SpawnManager : MonoBehaviour
         return randomSpawn;
     }
 
+    private GameObject PickRandomEnemy()
+    {
+        int enemyDiceRoll = Random.Range(0, 3);
+        return enemies[enemyDiceRoll];
+    }
+
     void SpawnEnemyWave(int spawnCredits)
     {
         for (int i = 0; i < spawnCredits; i++)
         {
-            Instantiate(enemy, PickRandomSpawn(), enemy.transform.rotation);
+            Instantiate(PickRandomEnemy(), PickRandomSpawn(), Quaternion.identity);
         }
     }
 }
