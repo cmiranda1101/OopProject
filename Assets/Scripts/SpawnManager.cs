@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private GameObject enemy;
     public GameObject[] enemies;
     private int waveCount;
     private int enemyCount;
@@ -23,21 +22,6 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnEnemyWave(waveCount);
             waveCount++;
-        }
-
-        //if (Input.GetKeyDown(KeyCode.O))
-        {
-            //Instantiate(enemy, PickRandomSpawn(), enemy.transform.rotation);
-        }
-
-        //if (Input.GetKeyDown(KeyCode.P))
-        {
-            //Instantiate(scout, PickRandomSpawn(), scout.transform.rotation);
-        }
-
-        //if (Input.GetKeyDown(KeyCode.I))
-        {
-            //Instantiate(knight, PickRandomSpawn(), knight.transform.rotation);
         }
     }
 

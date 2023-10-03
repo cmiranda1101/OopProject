@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private float speed = 20.0f;
+    public int health = 5;
     public bool facingRight;
     private float leftBound = -10.5f;
     private float rightBound = 10.5f;
@@ -48,6 +49,11 @@ public class PlayerController : MonoBehaviour
             inputDelay = 0.2f;
         }
         inputDelay -= Time.deltaTime;
+
+        if (health <= 0)
+        {
+            GameOver();
+        }
     }
 
     void MoveRight()
@@ -73,5 +79,10 @@ public class PlayerController : MonoBehaviour
     void Shoot()
     {
         Instantiate(projectile, transform.position, player.transform.rotation);
+    }
+
+    void GameOver()
+    {
+        Destroy(gameObject);
     }
 }

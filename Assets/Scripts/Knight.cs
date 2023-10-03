@@ -7,14 +7,20 @@ public class Knight : EnemyController
     void Awake()
     {
         player = GameObject.Find("Player");
-        speed = 3.5f;
+        speed = 3.75f;
         health = 4;
+        damage = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
+        distanceFromPlayer = player.transform.position.x - gameObject.transform.position.x;
         MoveToPlayer();
+        if (distanceFromPlayer <= 2)
+        {
+            Attack();
+        }
     }
 
     protected new void OnTriggerEnter(Collider other)

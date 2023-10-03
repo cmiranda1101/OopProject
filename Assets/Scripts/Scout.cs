@@ -8,14 +8,20 @@ public class Scout : EnemyController
     void Awake()
     {
         player = GameObject.Find("Player");
-        speed = 14.0f;
+        speed = 10.0f;
         health = 1;
+        damage = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
+        distanceFromPlayer = player.transform.position.x - gameObject.transform.position.x;
         MoveToPlayer();
+        if (distanceFromPlayer <= 2)
+        {
+            Attack();
+        }
     }
 
     protected new void OnTriggerEnter(Collider other)
