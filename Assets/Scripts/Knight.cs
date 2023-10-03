@@ -10,14 +10,27 @@ public class Knight : EnemyController
         speed = 3.75f;
         health = 4;
         damage = 3;
+        maxAttackDelay = 0.8f;
+        attackDelay = maxAttackDelay;
+        attackRange = 2.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        distanceFromPlayer = player.transform.position.x - gameObject.transform.position.x;
-        MoveToPlayer();
-        if (distanceFromPlayer <= 2)
+        distanceFromPlayer = Mathf.Clamp(Vector3.Distance(transform.position, player.transform.position), 0, 100);
+        //(Mathf.Abs(gameObject.transform.position.x) - Mathf.Abs(player.transform.position.x), 
+
+        if (distanceFromPlayer > attackRange)
+        {
+            MoveToPlayer();
+            if (attackDelay < maxAttackDelay)
+            {
+                attackDelay += Time.deltaTime;
+            }
+        }
+
+        if (distanceFromPlayer <= attackRange)
         {
             Attack();
         }

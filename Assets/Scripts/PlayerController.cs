@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = 20.0f;
+    private float speed = 7.5f;
     public int health = 5;
     public bool facingRight;
     private float leftBound = -10.5f;
     private float rightBound = 10.5f;
     private float inputDelay;
+
+    public TextMeshProUGUI healthText;
 
     public GameObject projectile;
     public GameObject player;
@@ -52,8 +56,11 @@ public class PlayerController : MonoBehaviour
 
         if (health <= 0)
         {
+            health = 0;
             GameOver();
         }
+
+        healthText.text = "Health: " + health;
     }
 
     void MoveRight()

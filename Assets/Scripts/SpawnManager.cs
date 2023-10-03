@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] enemies;
     private int waveCount;
     private int enemyCount;
+    public TextMeshProUGUI waveText;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,9 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         enemyCount = FindObjectsOfType<EnemyController>().Length;
+
+        waveText.text = "Wave: " + (waveCount - 1);
+
         if (enemyCount == 0)
         {
             SpawnEnemyWave(waveCount);

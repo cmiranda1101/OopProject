@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     public int health;
     public int damage;
     public float attackDelay;
+    public float maxAttackDelay;
+    public float attackRange;
     public float distanceFromPlayer;
 
     public PlayerController playerStats;
@@ -24,19 +26,26 @@ public class EnemyController : MonoBehaviour
         speed = 7.0f;
         health = 2;
         damage = 2;
-        attackDelay = 1.0f;
+        maxAttackDelay = 0.5f;
+        attackDelay = maxAttackDelay;
+        attackRange = 1.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        distanceFromPlayer = Mathf.Abs(Mathf.Abs(gameObject.transform.position.x) - Mathf.Abs(player.transform.position.x));
-        if (distanceFromPlayer < 0)
+        distanceFromPlayer = Mathf.Clamp(Vector3.Distance(transform.position, player.transform.position),0, 100);
+
+        if (distanceFromPlayer > attackRange)
         {
-            distanceFromPlayer *= -1;
+            MoveToPlayer();
+            if (attackDelay < maxAttackDelay) 
+            {
+                attackDelay += Time.deltaTime;
+            }
         }
-        MoveToPlayer();
-        if (distanceFromPlayer <= 2)
+
+        if (distanceFromPlayer <= attackRange)
         {
             Attack();
         }
@@ -71,7 +80,7 @@ public class EnemyController : MonoBehaviour
         if (attackDelay <= 0)
         {
             DealDamage();
-            attackDelay = 0.5f;
+            attackDelay = maxAttackDelay;
             Debug.Log("dealt damage");
         }
     }

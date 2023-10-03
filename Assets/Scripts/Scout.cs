@@ -11,14 +11,27 @@ public class Scout : EnemyController
         speed = 10.0f;
         health = 1;
         damage = 1;
+        maxAttackDelay = 0.4f;
+        attackDelay = maxAttackDelay;
+        attackRange = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        distanceFromPlayer = player.transform.position.x - gameObject.transform.position.x;
-        MoveToPlayer();
-        if (distanceFromPlayer <= 2)
+        distanceFromPlayer = Mathf.Clamp(Vector3.Distance(transform.position, player.transform.position), 0, 100);
+        //(Mathf.Abs(gameObject.transform.position.x) - Mathf.Abs(player.transform.position.x), 
+
+        if (distanceFromPlayer > attackRange)
+        {
+            MoveToPlayer();
+            if (attackDelay < maxAttackDelay)
+            {
+                attackDelay += Time.deltaTime;
+            }
+        }
+
+        if (distanceFromPlayer <= attackRange)
         {
             Attack();
         }
