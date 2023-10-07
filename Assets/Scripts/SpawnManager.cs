@@ -25,6 +25,7 @@ public class SpawnManager : MonoBehaviour
 
         if (enemyCount == 0)
         {
+            //Abstraction
             SpawnEnemyWave(waveCount);
             waveCount++;
         }

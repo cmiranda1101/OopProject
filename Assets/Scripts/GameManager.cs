@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (playerStats.health <= 0)
+        if (playerStats.Health <= 0)
         {
             GameOver();
         }

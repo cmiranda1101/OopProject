@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Inheritance
 public class Scout : EnemyController
 {
     // Start is called before the first frame update
     void Awake()
     {
         player = GameObject.Find("Player");
+
+        //Polymorphism
         speed = 10.0f;
         health = 1;
         damage = 1;
@@ -20,7 +23,7 @@ public class Scout : EnemyController
     void Update()
     {
         distanceFromPlayer = Mathf.Clamp(Vector3.Distance(transform.position, player.transform.position), 0, 100);
-        //(Mathf.Abs(gameObject.transform.position.x) - Mathf.Abs(player.transform.position.x), 
+         
 
         if (distanceFromPlayer > attackRange)
         {

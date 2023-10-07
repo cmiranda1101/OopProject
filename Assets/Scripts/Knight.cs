@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Inheritance
 public class Knight : EnemyController
 {
     void Awake()
     {
         player = GameObject.Find("Player");
+
+        //Polymorhphism
         speed = 3.75f;
         health = 4;
         damage = 3;
@@ -19,7 +22,7 @@ public class Knight : EnemyController
     void Update()
     {
         distanceFromPlayer = Mathf.Clamp(Vector3.Distance(transform.position, player.transform.position), 0, 100);
-        //(Mathf.Abs(gameObject.transform.position.x) - Mathf.Abs(player.transform.position.x), 
+        
 
         if (distanceFromPlayer > attackRange)
         {

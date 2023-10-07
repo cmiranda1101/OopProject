@@ -17,17 +17,38 @@ public class PlayerController : MonoBehaviour
 
     public GameObject projectile;
     public GameObject player;
-    // Start is called before the first frame update
+    
+    //Encapsulation
+    public int Health
+    {
+        get { return health; }
+        set 
+        { 
+            if (value > 5)
+            {
+                health = 5;
+                Debug.Log("Don't do that");
+            }
+            else
+            {
+                health = value;
+            }
+        }
+    }
+    
     void Start()
     {
         facingRight = true;
         inputDelay = 0.0f;
+        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        if(Input.GetKey(KeyCode.D))
+        Health = health;
+
+        if (Input.GetKey(KeyCode.D))
         {
             MoveRight();
         }
@@ -39,12 +60,12 @@ public class PlayerController : MonoBehaviour
 
         if(transform.position.x <= leftBound) 
         {
-            transform.position = new Vector3 (-10.5f, transform.position.y, transform.position.z);
+            transform.position = new Vector3 (leftBound, transform.position.y, transform.position.z);
         }
 
         if (transform.position.x >= rightBound)
         {
-            transform.position = new Vector3 (10.5f, transform.position.y, transform.position.z);
+            transform.position = new Vector3 (rightBound, transform.position.y, transform.position.z);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && inputDelay <= 0.0f)
