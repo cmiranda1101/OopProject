@@ -11,7 +11,7 @@ public class Scout : EnemyController
         speed = 10.0f;
         health = 1;
         damage = 1;
-        maxAttackDelay = 0.4f;
+        maxAttackDelay = 0.25f;
         attackDelay = maxAttackDelay;
         attackRange = 1.0f;
     }

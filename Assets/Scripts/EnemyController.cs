@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
         speed = 7.0f;
         health = 2;
         damage = 2;
-        maxAttackDelay = 0.5f;
+        maxAttackDelay = 0.3f;
         attackDelay = maxAttackDelay;
         attackRange = 1.5f;
     }

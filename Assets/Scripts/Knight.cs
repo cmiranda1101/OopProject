@@ -10,7 +10,7 @@ public class Knight : EnemyController
         speed = 3.75f;
         health = 4;
         damage = 3;
-        maxAttackDelay = 0.8f;
+        maxAttackDelay = 0.5f;
         attackDelay = maxAttackDelay;
         attackRange = 2.0f;
     }
